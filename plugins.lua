@@ -1,3 +1,4 @@
+--@type NvPluginSpec[]
 local plugins = {
   {
     "elkowar/yuck.vim", lazy = false
