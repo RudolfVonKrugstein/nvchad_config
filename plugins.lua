@@ -36,7 +36,7 @@ local plugins = {
     end
   },
   {
-    "saecki/creates.nvim",
+    "saecki/crates.nvim",
     ft = {"rust","toml"},
     config = function(_, opts)
       local crates = require('crates')
