@@ -2,7 +2,11 @@ local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = {"html", "cssls", "clangd", "rust_analyzer", "gopls"}
+local util = require "lspconfig/util"
+
+-- standard severs
+local servers = {"html", "cssls", "clangd", "gopls"}
+-- no rust-analyzer, we are using rust-tools
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -10,3 +14,4 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities
   }
 end
+

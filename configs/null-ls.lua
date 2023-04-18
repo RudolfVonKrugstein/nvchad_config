@@ -12,6 +12,17 @@ local sources = {
   formatting.rustfmt,
   formatting.rustywind,
   lint.shellcheck,
+  lint.write_good,
+  lint.actionlint,
+  lint.ansiblelint,
+  lint.chktex,
+  code_actions.gitsigns.with({
+    config = {
+        filter_actions = function(title)
+            return title:lower():match("blame") == nil -- filter out blame actions
+        end,
+    },
+  })
   --  code_actions.gitsigns
 }
 

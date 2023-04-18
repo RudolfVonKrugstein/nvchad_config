@@ -1,5 +1,6 @@
 --@type NvPluginSpec[]
 local plugins = {
+  -- LSP
   {
     "neovim/nvim-lspconfig",
 
@@ -15,6 +16,72 @@ local plugins = {
       require "custom.configs.lspconfig"
     end
   },
+  -- rust specific stuff
+  {
+    "rust-lang/rust.vim",
+    ft = "rust",
+    init = function()
+      vim.g.rustfmt_autosave = 1
+    end
+  },
+  {
+    "simrat39/rust-tools.nvim",
+    ft = "rust",
+    dependencies = "neovim/nvim-lspconfig",
+    opts = function ()
+      return require "custom.configs.rust-tools"
+    end,
+    config = function(_, opts)
+      require('rust-tools').setup(opts)
+    end
+  },
+  {
+    "saecki/creates.nvim",
+    ft = {"rust","toml"},
+    config = function(_, opts)
+      local crates = require('crates')
+      crates.setup(opts)
+      crates.show()
+    end
+  },
+  -- nvim-cmp update
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function()
+      local M = require "plugins.config.cmp"
+      table.insert(M.sources, {name="crates"})
+      return M
+    end
+  },
+  -- dap
+  {
+    'mfussenegger/nvim-dap',
+    lazy = false,
+    dependencies = {
+      {
+        "jay-babu/mason-nvim-dap.nvim",
+        dependencies = { "nvim-dap" },
+        cmd = { "DapInstall", "DapUninstall" },
+        opts = { handlers = {} },
+      },
+    },
+  },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    dependencies = { "nvim-dap" },
+    config = function()
+      require("nvim-dap-virtual-text").setup {}
+    end
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "nvim-dap" },
+    config = function()
+      require "dapui".setup()
+      require "custom.configs.dap-ui"
+    end
+  },
+  -- other stuff
   {
     "elkowar/yuck.vim", lazy = false
   },
