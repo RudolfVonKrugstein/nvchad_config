@@ -81,6 +81,14 @@ local plugins = {
       require "custom.configs.dap-ui"
     end
   },
+  -- python specific stuff
+  {
+    "mfussenegger/nvim-dap-python",
+    dependencies = {"nvim-dap"},
+    config = function()
+      require "dap-python".setup {}
+    end
+  },
   -- other stuff
   {
     "elkowar/yuck.vim", lazy = false
