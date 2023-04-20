@@ -13,6 +13,7 @@ local sources = {
   formatting.rustywind,
   lint.shellcheck,
   lint.write_good,
+  lint.eslint_d,
   lint.actionlint,
   lint.ansiblelint,
   lint.chktex,
