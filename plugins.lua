@@ -122,8 +122,13 @@ local plugins = {
     lazy = false
   },
   {
-    "pocco81/auto-save.nvim",
-    lazy = false
+    "okuuva/auto-save.nvim",
+    lazy = false,
+    config = function ()
+      require("auto-save").setup {
+        trigger_events = {"BufLeave", "FocusLost"}
+      }
+    end
   },
   {
     "Lilja/zellij.nvim",
