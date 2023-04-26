@@ -120,8 +120,8 @@ local plugins = {
   },
   -- asciidoctor
   {
-    "tigion/nvim-asciidoc-preview",
-    ft = "asciidoc"
+    "habamax/vim-asciidoctor",
+    ft = "asciidoctor"
   },
   {
     "pest-parser/pest.vim",
