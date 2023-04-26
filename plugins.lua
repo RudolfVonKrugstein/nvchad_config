@@ -110,12 +110,18 @@ local plugins = {
       }
     end
   },
+  -- markdown
   {
     "iamcco/markdown-preview.nvim",
     lazy = false,
     config = function()
       vim.fn["mkdp#util#install"]()
     end
+  },
+  -- asciidoctor
+  {
+    "tigion/nvim-asciidoc-preview",
+    ft = "asciidoc"
   },
   {
     "pest-parser/pest.vim",
